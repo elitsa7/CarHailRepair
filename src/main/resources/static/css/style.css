@@ -1,0 +1,88 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Light gray background */
+}
+
+.container {
+    max-width: 1200px; /* Max width for content */
+}
+
+/* Navbar Styles */
+.navbar-custom {
+    background-color: #343a40; /* Dark background color */
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* Larger font size for brand */
+}
+
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem; /* Padding around navbar links */
+    color: #ffffff; /* White text color */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff; /* White text color on hover */
+}
+
+/* Header Styles (if needed) */
+
+/* Main Content Styles */
+.main-content {
+    padding: 80px 0; /* Top and bottom padding */
+    background-color: #ffffff; /* White background */
+}
+
+.main-content .container {
+    padding: 40px 15px; /* Padding inside the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Box shadow for container */
+}
+
+.main-content h1 {
+    font-size: 3rem; /* Large heading size */
+    margin-bottom: 20px; /* Bottom margin */
+}
+
+.main-content p {
+    font-size: 1.2rem; /* Paragraph font size */
+    margin-bottom: 20px; /* Bottom margin */
+}
+
+.main-content .btn-custom {
+    background-color: #007bff; /* Primary button color */
+    border-color: #007bff; /* Primary button border color */
+}
+
+.main-content .btn-custom:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    border-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Footer Styles */
+.footer {
+    padding: 20px 0; /* Padding top and bottom */
+    background-color: #343a40; /* Dark background color */
+}
+
+.footer-background {
+    color: #ffffff; /* White text color */
+}
+
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0.5rem; /* Adjusted padding for smaller screens */
+    }
+
+    .main-content {
+        padding: 60px 0; /* Adjusted padding for smaller screens */
+    }
+}

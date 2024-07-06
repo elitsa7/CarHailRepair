@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons :: head"></head>
+<body>
+<header th:replace="fragments/commons :: header"></header>
+<section class="main-content">
+    <div class="container">
+        <h1 class="display-4">Welcome to Hail Cars Assessment</h1>
+        <p class="lead">Examples of well-made hail cars and price list.</p>
+        <a class="btn btn-custom btn-lg">Get Started</a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Car Offers</h2>
+                <p>Explore our current offers on well-maintained hail cars.</p>
+                <a href="#" class="btn btn-primary">View Offers</a>
+            </div>
+            <div class="col-md-6">
+                <h2>Price List</h2>
+                <p>Check out our price list for assessment and valuation.</p>
+                <a href="#" class="btn btn-outline-secondary">View Prices</a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/commons :: footer"></footer>
+</body>
+</html>

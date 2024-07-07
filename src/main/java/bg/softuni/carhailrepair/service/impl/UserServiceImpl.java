@@ -2,6 +2,7 @@ package bg.softuni.carhailrepair.service.impl;
 
 import bg.softuni.carhailrepair.model.User;
 import bg.softuni.carhailrepair.model.dtos.UserRegisterDTO;
+import bg.softuni.carhailrepair.model.enums.UserRole;
 import bg.softuni.carhailrepair.repo.UserRepository;
 import bg.softuni.carhailrepair.service.UserService;
 import bg.softuni.carhailrepair.util.UserSession;
@@ -32,10 +33,13 @@ public class UserServiceImpl implements UserService {
             return false;
         }
 
+        boolean isFirstUser = userRepository.count() == 0;
+
         User user = modelMapper.map(data, User.class);
         user.setPassword(passwordEncoder.encode(data.getPassword()));
-        userRepository.save(user);
+        user.setUserRole(isFirstUser ? UserRole.ADMIN : UserRole.USER);
 
+        userRepository.save(user);
         return true;
     }
 }

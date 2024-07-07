@@ -53,8 +53,8 @@ public class UserController {
         }
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("userRegisterDTO", bindingResult);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDTO", bindingResult);
+            redirectAttributes.addFlashAttribute("registerData", userRegisterDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerData", bindingResult);
 
             return "redirect:/register";
         }

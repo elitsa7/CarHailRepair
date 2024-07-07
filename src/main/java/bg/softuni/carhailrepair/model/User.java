@@ -19,7 +19,13 @@ public class User extends BaseEntity {
     @Column(name = "role", nullable = false)
     private UserRole userRole;
 
-    public User() {}
+    public User() {
+        this.userRole = UserRole.USER;
+    }
+
+    public User(UserRole userRole) {
+        this.userRole = userRole;
+    }
 
     public String getUsername() {
         return username;

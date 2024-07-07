@@ -3,16 +3,23 @@ body {
     background-color: #f8f9fa;
 }
 
+.navbar-brand {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 2rem;
+}
+
+.navbar-nav .nav-link{
+    font-size: 1.2rem;
+}
+
+.navbar-nav .nav-item.active .nav-link{
+    font-weight: bold;
+}
+
 .container {
     max-width: 1200px;
-}
-
-.navbar-custom {
-    background-color: #343a40;
-}
-
-.navbar-brand {
-    font-size: 1.5rem;
 }
 
 .main-content {
@@ -23,7 +30,7 @@ body {
 .main-content .container {
     padding: 40px 15px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .main-content h1 {
@@ -34,16 +41,6 @@ body {
 .main-content p {
     font-size: 1.2rem;
     margin-bottom: 20px;
-}
-
-.main-content .btn-custom {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.main-content .btn-custom:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
 }
 
 .footer {

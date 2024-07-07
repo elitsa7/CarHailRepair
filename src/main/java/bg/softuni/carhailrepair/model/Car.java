@@ -19,7 +19,10 @@ public class Car extends BaseEntity {
     private String model;
 
     @Column(nullable = false)
-   private int year;
+    private int year;
+
+    @Column(nullable = false)
+    private String imagePath;
 
     @Column(columnDefinition = "TEXT")
     private String description;
@@ -32,6 +35,10 @@ public class Car extends BaseEntity {
     private CarStatus status;
 
     public Car() {
+    }
+
+    public Car(CarStatus status) {
+        this.status = CarStatus.PENDING;
     }
 
     public User getUser() {
@@ -88,5 +95,13 @@ public class Car extends BaseEntity {
 
     public void setStatus(CarStatus status) {
         this.status = status;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

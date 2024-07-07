@@ -1,7 +1,7 @@
 package bg.softuni.carhailrepair.controller;
 
-import bg.softuni.carhailrepair.model.dtos.UserLoginDTO;
-import bg.softuni.carhailrepair.model.dtos.UserRegisterDTO;
+import bg.softuni.carhailrepair.model.dtos.user.UserLoginDTO;
+import bg.softuni.carhailrepair.model.dtos.user.UserRegisterDTO;
 import bg.softuni.carhailrepair.repo.UserRepository;
 import bg.softuni.carhailrepair.service.UserService;
 import bg.softuni.carhailrepair.util.UserSession;
@@ -98,7 +98,7 @@ public class UserController {
             return "redirect:/login";
         }
 
-        return "redirect:/home";
+        return "redirect:/"; //TODO to home
     }
 
 

@@ -1,8 +1,8 @@
 package bg.softuni.carhailrepair.service.impl;
 
 import bg.softuni.carhailrepair.model.User;
-import bg.softuni.carhailrepair.model.dtos.UserLoginDTO;
-import bg.softuni.carhailrepair.model.dtos.UserRegisterDTO;
+import bg.softuni.carhailrepair.model.dtos.user.UserLoginDTO;
+import bg.softuni.carhailrepair.model.dtos.user.UserRegisterDTO;
 import bg.softuni.carhailrepair.model.enums.UserRole;
 import bg.softuni.carhailrepair.repo.UserRepository;
 import bg.softuni.carhailrepair.service.UserService;

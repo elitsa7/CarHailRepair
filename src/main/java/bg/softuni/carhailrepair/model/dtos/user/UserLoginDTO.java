@@ -1,4 +1,4 @@
-package bg.softuni.carhailrepair.model.dtos;
+package bg.softuni.carhailrepair.model.dtos.user;
 
 import jakarta.validation.constraints.NotBlank;
 

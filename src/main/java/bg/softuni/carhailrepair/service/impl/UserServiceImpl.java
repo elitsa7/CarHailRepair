@@ -1,6 +1,7 @@
 package bg.softuni.carhailrepair.service.impl;
 
 import bg.softuni.carhailrepair.model.User;
+import bg.softuni.carhailrepair.model.dtos.UserLoginDTO;
 import bg.softuni.carhailrepair.model.dtos.UserRegisterDTO;
 import bg.softuni.carhailrepair.model.enums.UserRole;
 import bg.softuni.carhailrepair.repo.UserRepository;
@@ -40,6 +41,23 @@ public class UserServiceImpl implements UserService {
         user.setUserRole(isFirstUser ? UserRole.ADMIN : UserRole.USER);
 
         userRepository.save(user);
+        return true;
+    }
+
+    @Override
+    public boolean login(UserLoginDTO userLoginDTO) {
+        Optional<User> byUsername = userRepository.findByUsername(userLoginDTO.getUsername());
+
+        if (byUsername.isEmpty()) {
+            return false;
+        }
+
+        if (!passwordEncoder.matches(userLoginDTO.getPassword(), byUsername.get().getPassword())) {
+            return false;
+        }
+
+        userSession.login(byUsername.get().getId(), byUsername.get().getUsername());
+
         return true;
     }
 }

@@ -68,5 +68,38 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        if (userSession.isLoggedIn()) {
+            return "redirect:/home";
+        }
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String doLogin(@Valid UserLoginDTO userLoginDTO,
+                             BindingResult bindingResult,
+                             RedirectAttributes redirectAttributes) {
+        if (userSession.isLoggedIn()) {
+            return "redirect:/home";
+        }
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("loginData", userLoginDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.loginData", bindingResult);
+
+            return "redirect:/login";
+        }
+
+        boolean successLogin = userService.login(userLoginDTO);
+
+        if (!successLogin) {
+            redirectAttributes.addFlashAttribute("loginError", true);
+            return "redirect:/login";
+        }
+
+        return "redirect:/home";
+    }
+
 
 }

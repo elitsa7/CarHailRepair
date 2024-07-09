@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/commons :: head"></head>
 <body>
 <header th:replace="fragments/commons :: header"></header>
@@ -13,7 +12,7 @@
         <div class="row">
             <div class="col-md-6">
                 <form th:action="@{/submit-car}" th:method="POST" th:object="${submitCar}"
-                      class="needs-validation" novalidate>
+                      class="needs-validation" enctype="multipart/form-data" novalidate>
                     <div class="form-group">
                         <label for="make">Make</label>
                         <input type="text" class="form-control" id="make" name="make"
@@ -38,10 +37,20 @@
                             Please provide a valid year.
                         </div>
                     </div>
-                    //TODO
+                    <div class="form-group">
+                        <label for="damageDescription">Damage Description</label>
+                        <textarea class="form-control" id="damageDescription" name="damageDescription"
+                                  th:field="*{damageDescription}" required></textarea>
+                        <div class="invalid-feedback">
+                            Please provide a damage description.
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="image">Image</label>
                         <input th:field="*{image}" type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
+                        <div class="invalid-feedback">
+                            Please attach an image of the car.
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit Car</button>
                 </form>

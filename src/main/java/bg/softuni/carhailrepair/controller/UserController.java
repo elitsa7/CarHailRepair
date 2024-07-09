@@ -38,7 +38,7 @@ public class UserController {
     @GetMapping("/register")
     public String register() {
         if (userSession.isLoggedIn()) {
-            return "redirect:/home";
+            return "redirect:/index";
         }
 
         return "register";
@@ -49,7 +49,7 @@ public class UserController {
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes) {
         if (userSession.isLoggedIn()) {
-            return "redirect:/home";
+            return "redirect:/index";
         }
 
         if (bindingResult.hasErrors()) {
@@ -71,7 +71,7 @@ public class UserController {
     @GetMapping("/login")
     public String login() {
         if (userSession.isLoggedIn()) {
-            return "redirect:/home";
+            return "redirect:/index";
         }
         return "login";
     }
@@ -81,7 +81,7 @@ public class UserController {
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes) {
         if (userSession.isLoggedIn()) {
-            return "redirect:/home";
+            return "redirect:/index";
         }
 
         if (bindingResult.hasErrors()) {
@@ -98,7 +98,7 @@ public class UserController {
             return "redirect:/login";
         }
 
-        return "redirect:/"; //TODO to home
+        return "redirect:/"; //TODO to index
     }
 
 

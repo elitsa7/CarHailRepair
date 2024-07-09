@@ -2,21 +2,23 @@ package bg.softuni.carhailrepair.model.dtos.car;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 
 public class SubmitCarDTO {
-    @NotBlank(message = "Car make is required")
+    @NotBlank(message = "Car make is required!")
     private String make;
 
-    @NotBlank(message = "Car model is required")
+    @NotBlank(message = "Car model is required!")
     private String model;
 
-    @Min(value = 1900, message = "Invalid car year")
+    @Min(value = 1900, message = "Invalid car year!")
     private int year;
 
+    @NotNull(message = "Please attach the photo!")
     private MultipartFile image;
 
-    @NotBlank(message = "Damage description is required")
+    @NotBlank(message = "Damage description is required!")
     private String damageDescription;
 
     public SubmitCarDTO() {

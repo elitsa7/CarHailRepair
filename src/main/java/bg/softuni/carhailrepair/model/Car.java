@@ -34,10 +34,11 @@ public class Car extends BaseEntity {
     @Column(nullable = false)
     private CarStatus status;
 
-    public Car() {
+    public Car(CarStatus carStatus) {
+        this.status = carStatus;
     }
 
-    public Car(CarStatus status) {
+    public Car() {
         this.status = CarStatus.PENDING;
     }
 

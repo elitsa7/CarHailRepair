@@ -98,8 +98,15 @@ public class UserController {
             return "redirect:/login";
         }
 
-        return "redirect:/"; //TODO to index
+        return "redirect:/";
     }
 
-
+    @GetMapping("/logout")
+    public String logout() {
+        if(!userSession.isLoggedIn()) {
+            return "redirect:/login";
+        }
+        userService.logout();
+        return "redirect:/";
+    }
 }

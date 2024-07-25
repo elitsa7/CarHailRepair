@@ -1,6 +1,5 @@
 package bg.softuni.carhailrepair.model;
 
-import bg.softuni.carhailrepair.model.enums.OfferStatus;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +10,9 @@ public class Offer extends BaseEntity {
     @Column(name = "offer_id")
     private Long offerId;
 
+    @Column(name = "offer_amount", nullable = false)
+    private double offerAmount;
+
     @ManyToOne
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
@@ -18,13 +20,6 @@ public class Offer extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)
     private User admin;
-
-    @Column(name = "offer_amount", nullable = false)
-    private double offerAmount;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private OfferStatus status;
 
     public Offer() {
 
@@ -34,7 +29,6 @@ public class Offer extends BaseEntity {
         this.car = car;
         this.admin = admin;
         this.offerAmount = offerAmount;
-        this.status = OfferStatus.PENDING;
     }
 
     public Long getOfferId() {
@@ -67,13 +61,5 @@ public class Offer extends BaseEntity {
 
     public void setOfferAmount(double offerAmount) {
         this.offerAmount = offerAmount;
-    }
-
-    public OfferStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OfferStatus status) {
-        this.status = status;
     }
 }

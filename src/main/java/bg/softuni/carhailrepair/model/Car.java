@@ -27,12 +27,15 @@ public class Car extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
-    private List<DamageAssessment> damageAssessments;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CarStatus status;
+
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+    private List<DamageAssessment> damageAssessments;
+
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Offer> offers;
 
     public Car(CarStatus carStatus) {
         this.status = carStatus;
@@ -104,5 +107,13 @@ public class Car extends BaseEntity {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
 }

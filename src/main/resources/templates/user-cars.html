@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons :: head"></head>
+<body>
+<header th:replace="fragments/commons :: header"></header>
+
+<section class="main-content">
+    <div class="container">
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Cars</span></h1>
+        <div class="row" th:each="car : ${cars}">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img th:src="@{${car.imagePath}}" alt="Car Image">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${car.make} + ' ' + ${car.model}"></h5>
+                        <p class="card-text">Year: <span th:text="${car.year}"></span></p>
+                        <p class="card-text">Status: <span th:text="${car.status}"></span></p>
+                        <div th:if="${car.offers.size() > 0}">
+                            <h6>Offers:</h6>
+                            <ul>
+                                <li th:each="offer : ${car.offers}">
+                                    Amount: <span th:text="${offer.offerAmount}"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div th:if="${car.offers.size() == 0}">
+                            <p>No offers yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/commons :: footer"></footer>
+</body>
+</html>

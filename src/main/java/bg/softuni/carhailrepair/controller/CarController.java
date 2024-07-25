@@ -51,7 +51,7 @@ public class CarController {
 
         carService.saveCar(submitCarDTO);
 
-        return "redirect:/home";
+        return "redirect:/";
     }
 
     @GetMapping("/user-cars")

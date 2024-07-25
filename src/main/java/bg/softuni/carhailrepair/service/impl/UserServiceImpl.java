@@ -1,9 +1,11 @@
 package bg.softuni.carhailrepair.service.impl;
 
+import bg.softuni.carhailrepair.model.Admin;
 import bg.softuni.carhailrepair.model.User;
 import bg.softuni.carhailrepair.model.dtos.user.UserLoginDTO;
 import bg.softuni.carhailrepair.model.dtos.user.UserRegisterDTO;
 import bg.softuni.carhailrepair.model.enums.UserRole;
+import bg.softuni.carhailrepair.repo.AdminRepository;
 import bg.softuni.carhailrepair.repo.UserRepository;
 import bg.softuni.carhailrepair.service.UserService;
 import bg.softuni.carhailrepair.util.UserSession;
@@ -17,19 +19,21 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserSession userSession;
     private final UserRepository userRepository;
+    private final AdminRepository adminRepository;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
 
-    public UserServiceImpl(UserSession userSession, UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
+    public UserServiceImpl(UserSession userSession, UserRepository userRepository, AdminRepository adminRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
         this.userSession = userSession;
         this.userRepository = userRepository;
+        this.adminRepository = adminRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
     }
 
     @Override
     public boolean register(UserRegisterDTO data) {
-        Optional<User> existingUser = userRepository.findByUsernameOrEmail(data.getUsername(), data.getPassword());
+        Optional<User> existingUser = userRepository.findByUsernameOrEmail(data.getUsername(), data.getEmail());
         if (existingUser.isPresent()) {
             return false;
         }
@@ -40,7 +44,14 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(data.getPassword()));
         user.setUserRole(isFirstUser ? UserRole.ADMIN : UserRole.USER);
 
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
+
+        if (isFirstUser) {
+            Admin admin = new Admin();
+            admin.setUser(savedUser);
+            adminRepository.save(admin);
+        }
+
         return true;
     }
 
@@ -64,5 +75,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void logout() {
         userSession.logout();
+    }
+
+    public boolean isUserAdmin(Long userId) {
+        return userRepository.findById(userId)
+                .map(user -> user.getUserRole() == UserRole.ADMIN)
+                .orElse(false);
     }
 }

@@ -19,6 +19,9 @@ public class User extends BaseEntity {
     @Column(name = "role", nullable = false)
     private UserRole userRole;
 
+    @OneToOne(mappedBy = "user")
+    private Admin admin;
+
     public User() {
         this.userRole = UserRole.USER;
     }

@@ -76,10 +76,4 @@ public class UserServiceImpl implements UserService {
     public void logout() {
         userSession.logout();
     }
-
-    public boolean isUserAdmin(Long userId) {
-        return userRepository.findById(userId)
-                .map(user -> user.getUserRole() == UserRole.ADMIN)
-                .orElse(false);
-    }
 }

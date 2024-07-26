@@ -11,38 +11,34 @@
 </head>
 <body>
 <header th:fragment="header">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-        <div class="home">
-            <a th:href="@{/}" class="navbar-brand">Car Hail Repair</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Car Hail Repair</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a th:href="@{/}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                <li class="nav-item">
+                    <a th:if="${!@userSession.isLoggedIn()}" th:href="@{/login}" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a th:if="${!@userSession.isLoggedIn()}" th:href="@{/register}" class="nav-link">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a th:if="${@userSession.isLoggedIn()}" th:href="@{/logout}" class="nav-link">Logout</a>
+                </li>
+            </ul>
         </div>
-
-        <ul class="navbar-nav ml-auto">
-            <li>
-                <a th:if="${!@userSession.isLoggedIn()}" th:href="@{/login}" class="nav-link">Login</a>
-            </li>
-            <li>
-                <a th:if="${!@userSession.isLoggedIn()}" th:href="@{/register}" class="nav-link">Register</a>
-            </li>
-            <li>
-                <a th:if="${@userSession.isLoggedIn()}" th:href="@{/user-cars}" class="nav-link">View cars</a>
-            </li>
-            <li>
-                <a th:if="${@userSession.isLoggedIn()}" th:href="@{/submit-car}" class="nav-link">Submit car</a>
-            </li>
-            <li>
-                <a th:if="${@userSession.isLoggedIn()}" th:href="@{/logout}" class="nav-link">Logout</a>
-            </li>
-        </ul>
-
     </nav>
-
 </header>
-<footer th:fragment="footer" class="footer bg-transparent py-2">
-    <div class="container-fluid text-center">
-        <div class="h6 text-primary text-stroke fixed-bottom">
-            &copy; Hail Cars Team 2024. All rights reserved.
-        </div>
+<footer class="text-center text-dark">
+    <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <a class="text-dark">&copy; 2024 Car Hail Repair. All rights reserved.</a>
     </div>
 </footer>
 </body>

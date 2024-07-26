@@ -47,5 +47,4 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("message", "User role updated successfully.");
         return "redirect:/user-list";
     }
-    // TODO MISS MATCH WHEN SET USER TO DELETE IT FROM ADMIN TABLE
 }

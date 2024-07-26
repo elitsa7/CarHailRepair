@@ -1,73 +1,22 @@
-body {
+body, html {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
-
-.navbar-brand {
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-right: 2rem;
+.content {
+    flex: 1;
 }
-.navbar-nav .nav-link{
-    font-size: 1.2rem;
-    padding: 5px;
+.hero-section {
+    color: black;
+    padding: 100px 0;
+    text-align: center;
 }
-
-.main-content {
+.features {
     padding: 50px 0;
 }
-
-.main-content .container {
-    padding: 40px 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.main-content .container h1{
-    font-size: 3rem;
-}
-
-.footer {
-    padding: 20px 0;
-    background-color: #343a40;
-}
-
-.fixed-bottom {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-.form-group {
-    margin-bottom: 20px;
-}
-
-.label-holder {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.label-holder label {
-    font-size: 1.2rem;
-    color: #343a40;
-}
-
-.form-control {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border: 1px solid #ced4da;
-    border-radius: 6px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.form-control:focus {
-    outline: 0;
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.button-holder {
-    margin-top: 20px;
+.feature-item {
+    padding: 20px;
     text-align: center;
 }

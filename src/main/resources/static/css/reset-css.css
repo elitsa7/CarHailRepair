@@ -36,12 +36,3 @@ html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
 }
-
-input[type='checkbox'],
-input[type='radio'] {
-    display: none;
-}
-
-summary {
-    display: list-item;
-}
